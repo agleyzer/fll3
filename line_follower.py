@@ -1,3 +1,5 @@
+# LEGO type:standard slot:1 autostart
+
 from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, DistanceSensor, Motor, MotorPair
 from spike.control import wait_for_seconds, wait_until, Timer
 from math import *
@@ -22,12 +24,15 @@ while True:
     rl = color_right.get_reflected_light()
     print(ll, rl)
     if ll < 60:
+        hub.light_matrix.show_image('ARROW_N')
         print("go left!")
         robot_move(5, 10)
     elif rl < 60:
+        hub.light_matrix.show_image('ARROW_S')
         print("go right!")
         robot_move(10, 5)
     else:
+        hub.light_matrix.show_image('ARROW_E')
         print("go straight!")
         robot_move(5, 5)
     wait_for_seconds(0.5)
